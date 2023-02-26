@@ -1,6 +1,6 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var SubCategorySchema = new Schema({
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const SubCategorySchema = new Schema({
 	name: {
 		type: String,
 	},
@@ -10,6 +10,5 @@ var SubCategorySchema = new Schema({
 		ref: "categories",
 	},
 });
-
 const SubCategories = mongoose.model("subcategories", SubCategorySchema);
 module.exports = SubCategories;
