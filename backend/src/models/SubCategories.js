@@ -10,5 +10,6 @@ var SubCategorySchema = new Schema({
 		ref: "categories",
 	},
 });
+
 const SubCategories = mongoose.model("subcategories", SubCategorySchema);
 module.exports = SubCategories;
