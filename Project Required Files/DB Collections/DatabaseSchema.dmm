@@ -272,7 +272,8 @@
 				}
 			],
 			"relations": [
-				"9214bde3-6dde-4e67-b9fe-deb5e3ccba0f"
+				"9214bde3-6dde-4e67-b9fe-deb5e3ccba0f",
+				"ca372bb9-8e78-48ea-bc27-5d5dbe712139"
 			],
 			"lines": [],
 			"keys": [
@@ -407,11 +408,25 @@
 					"data": "",
 					"fk": true,
 					"ref": "Categories"
+				},
+				{
+					"id": "89413d0f-62cb-42b1-8dce-c2bee0acfef2",
+					"name": "subcategory_id",
+					"datatype": "ObjectId",
+					"param": "",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"fk": true,
+					"ref": "SubCategories"
 				}
 			],
 			"relations": [
 				"e9e153fd-aec8-4589-977d-16822a5e77d2",
-				"f9a0ef0f-474f-4a35-8b04-7c526420dcf3"
+				"f9a0ef0f-474f-4a35-8b04-7c526420dcf3",
+				"ca372bb9-8e78-48ea-bc27-5d5dbe712139"
 			],
 			"lines": [],
 			"keys": [
@@ -509,6 +524,31 @@
 			],
 			"generate": true,
 			"generateCustomCode": true
+		},
+		"ca372bb9-8e78-48ea-bc27-5d5dbe712139": {
+			"id": "ca372bb9-8e78-48ea-bc27-5d5dbe712139",
+			"visible": true,
+			"name": "SubCategories_Tasks",
+			"desc": "",
+			"type": "identifying",
+			"parent_key": "1d4f4af7-2171-4493-8b5a-b7a2403a1bf5",
+			"parent": "3992ff6c-f9bc-4782-8f5c-60e4479d30cc",
+			"child": "1fd924a4-d20e-499c-a98d-dc3957a10f6f",
+			"c_mp": "true",
+			"c_mch": "true",
+			"c_p": "one",
+			"c_ch": "many",
+			"c_cp": "",
+			"c_cch": "",
+			"cols": [
+				{
+					"id": "f9e85af7-eeca-4dd8-b4a0-5fe289788072",
+					"parentcol": "5e4cc34f-d027-4ff7-8f64-2e1dcd4582c7",
+					"childcol": "89413d0f-62cb-42b1-8dce-c2bee0acfef2"
+				}
+			],
+			"generate": true,
+			"generateCustomCode": true
 		}
 	},
 	"notes": {},
@@ -540,7 +580,7 @@
 		"currentDisplayMode": "metadata",
 		"def_coltopk": true,
 		"def_others": "",
-		"lastSaved": "Sun Feb 26 2023 10:55:38 GMT+0600 (Bangladesh Standard Time)"
+		"lastSaved": "Sun Feb 26 2023 10:56:32 GMT+0600 (Bangladesh Standard Time)"
 	},
 	"otherObjects": {},
 	"diagrams": {
@@ -558,8 +598,8 @@
 			"diagramItems": {
 				"72a433a0-5278-4bc1-aa46-b2a224bb9851": {
 					"referencedItemId": "72a433a0-5278-4bc1-aa46-b2a224bb9851",
-					"x": 45,
-					"y": 59,
+					"x": 90,
+					"y": 120,
 					"gHeight": 217,
 					"gWidth": 276,
 					"color": "#ffffff",
@@ -569,8 +609,8 @@
 				},
 				"6870024f-ac05-4a86-ae64-e1efce31f147": {
 					"referencedItemId": "6870024f-ac05-4a86-ae64-e1efce31f147",
-					"x": 462,
-					"y": 511,
+					"x": 494,
+					"y": 211,
 					"gHeight": 84,
 					"gWidth": 262,
 					"color": "#ffffff",
@@ -580,8 +620,8 @@
 				},
 				"3992ff6c-f9bc-4782-8f5c-60e4479d30cc": {
 					"referencedItemId": "3992ff6c-f9bc-4782-8f5c-60e4479d30cc",
-					"x": 384,
-					"y": 86,
+					"x": 521,
+					"y": 517,
 					"gHeight": 81,
 					"gWidth": 224,
 					"color": "#ffffff",
@@ -591,9 +631,9 @@
 				},
 				"1fd924a4-d20e-499c-a98d-dc3957a10f6f": {
 					"referencedItemId": "1fd924a4-d20e-499c-a98d-dc3957a10f6f",
-					"x": 45,
-					"y": 384,
-					"gHeight": 170,
+					"x": 62,
+					"y": 407,
+					"gHeight": 189,
 					"gWidth": 247,
 					"color": "#ffffff",
 					"background": "#03a9f4",

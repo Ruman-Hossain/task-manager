@@ -1,14 +1,10 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var CategorySchema = new Schema({
-	name: {
-		type: String,
-	},
-	category_id: {
-		type: Schema.Types.ObjectId,
-		required: true,
-		ref: "Categories",
-	},
+  name: {
+    type: String,
+    required: true
+  }
 });
-const Categories = mongoose.model("Categories", CategorySchema);
+const Categories = mongoose.model("categories", CategorySchema);
 module.exports = Categories;
