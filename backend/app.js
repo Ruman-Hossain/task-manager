@@ -28,7 +28,7 @@ const limiter = rateLimit({
 });
 
 //MongoDB Database Connection
-const URI = "mongodb://127.0.0.1/task-manager";
+const URI = "mongodb://127.0.0.1:27017/task-manager";
 const OPTIONS = { user: "", pass: "" };
 mongoose.set("strictQuery", true);
 mongoose.connect(URI, OPTIONS, (error) => {
