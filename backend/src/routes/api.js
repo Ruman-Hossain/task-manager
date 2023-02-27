@@ -13,9 +13,9 @@ router.get("/test", testQuery); //http://localhost:8080/api/v1/test
 
 //User Routes
 router.post("/user/signup", userController.signup);
-router.post("/user/login", userController.login);
-router.patch("/user/update", userController.update);
-router.get("/user/logout", userController.logout);
+router.post("/user/login",userController.verifyUser,userController.login);
+router.patch("/user/update/:id",userController.update);
+router.get("/user/logout",userController.logout);
 
 //Category Routes
 router.post("/category/create", categoryController.create);
