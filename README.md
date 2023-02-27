@@ -1,14 +1,3 @@
-# task-manager
-
-Task Manager Team Project
-
-## Lubna Present
-
-## prince present
-
-## Ismile Sarder
-
-
-## Minhaz Rahman
-
-## MD RUBEL
+# Task Manager |  Team Project
+# Documentation
+[POSTMAN API Reference](https://documenter.getpostman.com/view/12434516/2s93CPrsWq)

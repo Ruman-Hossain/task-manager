@@ -5,6 +5,11 @@ var CategorySchema = new Schema({
 		type: String,
 		required: true,
 	},
+	user_id: {
+		type: Schema.Types.ObjectId,
+		required: true,
+		ref: "users",
+	},
 });
 const Categories = mongoose.model("categories", CategorySchema);
 module.exports = Categories;
