@@ -1,4 +1,4 @@
-const SubCatgories = require("../models/SubCategories");
+const SubCategories = require("../models/SubCategories");
 exports.create = (req, res) => {
 	res.status(200).json({ location: "SubCategory Create" });
 };
