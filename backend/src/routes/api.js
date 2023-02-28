@@ -21,7 +21,7 @@ router.get("/user/logout", userController.logout);
 //Category Routes
 router.post("/category/create", decoder, categoryController.create);
 router.patch("/category/update/:id", categoryController.update);
-router.get("/category/list", categoryController.list);
+router.get("/category/list", decoder, categoryController.list);
 router.delete("/category/delete/:id", categoryController.delete);
 
 //Sub Category Routes

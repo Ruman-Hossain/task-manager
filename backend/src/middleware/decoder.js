@@ -13,8 +13,8 @@ module.exports = decoder = (req, res, next) => {
 			if (error) {
 				res.status(201).json({ Error: error });
 			} else {
-				console.log("Im from decoder");
-				console.log(JSON.stringify(decoded, null, 2));
+				// console.log("Im from decoder");
+				// console.log(JSON.stringify(decoded, null, 2));
 				req.headers.user_id = decoded.userId;
 				next();
 			}

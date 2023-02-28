@@ -59,7 +59,8 @@ exports.update = async (req, res) => {
 
 exports.list = async (req, res) => {
 	try {
-		const list = await Categories.find({});
+		const user_id = req.headers.user_id;
+		const list = await Categories.find({ user_id: user_id });
 		res.status(200).json(list);
 	} catch (error) {
 		res.status(400).json({ error: "No category list" });
@@ -72,20 +73,19 @@ exports.delete = async (req, res) => {
 	try {
 		const id = req.params.id;
 		const query = { _id: id };
-		Categories.deleteOne(query, (error, data) => {
-			if (error) {
-				res.status(400).json({
-					status: "Category Delete Failed",
-					data: error,
-				});
-			} else {
-				res.status(200).json({
-					status: "Category Delete Successful",
-					data: data,
-				});
-			}
-		});
+		const data = await Categories.deleteOne(query);
+		if (data.deletedCount === 1) {
+			res.status(200).json({
+				status: "Category Delete Successful",
+				data: data,
+			});
+		} else {
+			res.status(400).json({
+				status: "Category Delete failed",
+				data: "No Data Found to Delete",
+			});
+		}
 	} catch (error) {
-		res.status(400).json({ error: "Category Delete failed" });
+		res.status(400).json({ status: "Category Delete failed" });
 	}
 };
