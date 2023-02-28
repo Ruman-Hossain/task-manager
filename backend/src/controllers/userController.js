@@ -7,122 +7,120 @@ const ENV = require("../../config.env");
 exports.verifyUser = async (req, res, next) => {
 	try {
 		const { email } = req.method == "GET" ? req.query : req.body;
-		//check the user existence
-		let exist = await Users.findOne({ email });
-		if (!exist) return res.status(404).send({ error: "can't find user!" });
+
+		await validateEmail(email);
+
+		const user = await Users.findOne({ email });
+
+		if (!user) {
+			return res.status(404).send({ error: "User not found" });
+		}
+
 		next();
 	} catch (error) {
-		return res.status(404).send({ error: "Authentication error" });
+		console.error(error);
+		return res.status(500).send({ error: "Authentication error" });
 	}
+};
+
+const validateEmail = (email) => {
+	return new Promise((resolve, reject) => {
+		if (!email) {
+			return reject({ error: "Email is required" });
+		}
+
+		// Use a regular expression to validate the email address
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(email)) {
+			return reject({ error: "Invalid email address" });
+		}
+
+		resolve();
+	});
 };
 
 //signUp function create
-exports.signup = (req, res) => {
-	const { full_name, phone, profile_pic, email, password } = req.body;
+exports.signup = async (req, res) => {
+	const { username, phone, profile_pic, email, password } = req.body;
 
 	try {
-		// check existing user name
-		const existUserName = new Promise((resolve, reject) => {
-			Users.findOne({ full_name }, (error, data) => {
-				if (error) reject(error);
-				if (data) reject({ data: "please Enter your unique Name" });
-				resolve();
-			});
-		});
-		// check existing user Mail
-		const existUserMail = new Promise((resolve, reject) => {
-			Users.findOne({ email }, (error, data) => {
-				if (error) reject(error);
-				if (data) reject({ data: "please Enter your unique Email" });
-				resolve();
-			});
+		await checkExistingUser(username, "username");
+		await checkExistingUser(email, "email");
+
+		const hashPassword = await bcrypt.hash(password, 5);
+
+		const user = new Users({
+			username,
+			password: hashPassword,
+			profile_pic: profile_pic || "",
+			phone,
+			email,
 		});
 
-		Promise.all([existUserName, existUserMail])
-			.then(() => {
-				if (password) {
-					bcrypt
-						.hash(password, 5)
-						.then((hashPassword) => {
-							const user = Users({
-								full_name,
-								password: hashPassword,
-								profile_pic: profile_pic || "",
-								phone,
-								email,
-							});
+		const result = await user.save();
 
-							user.save()
-								.then((result) =>
-									res
-										.status(201)
-										.send({
-											msg: "User Register Successfully ",
-											status: result,
-										})
-								)
-								.catch((error) =>
-									res.status(500).send({ error })
-								);
-						})
-						.catch((error) => {
-							console.error(error);
-							return res
-								.status(500)
-								.send({ error: "unable to hash password" });
-						});
-				}
-			})
-			.catch((error) => {
-				console.error(error);
-				return res.status(500).send({ error });
-			});
+		return res.status(201).send({
+			msg: "User Registered Successfully ",
+			status: result,
+		});
 	} catch (error) {
 		console.error(error);
-		return res.status(500).send(error);
+		return res.status(500).send({ error });
 	}
 };
 
+const checkExistingUser = (value, field) => {
+	return new Promise((resolve, reject) => {
+		const query = {};
+		query[field] = value;
+
+		Users.findOne(query, (error, data) => {
+			if (error) return reject(error);
+
+			if (data) {
+				const errorMessage = `Please enter a unique ${field}`;
+				return reject({ data: errorMessage });
+			}
+
+			return resolve();
+		});
+	});
+};
+
 //login function controller
-exports.login = (req, res) => {
-	const { email, password } = req.body;
+exports.login = async (req, res) => {
 	try {
-		Users.findOne({ email })
-			.then((user) => {
-				bcrypt
-					.compare(password, user.password)
-					.then((passwordCheck) => {
-						if (!passwordCheck) {
-							return res
-								.status(400)
-								.json({ error: "Invalid password" });
-						}
-						// jwt token
-						const token = jwt.sign(
-							{ userId: user._id, email: user.email },
-							process.env.JWT_SECRET,
-							{ expiresIn: "6h" }
-						);
-						return res.status(200).send({
-							msg: "Login successful!",
-							email: user.email,
-							token,
-						});
-					})
-					.catch((error) => {
-						console.error(error);
-						return res
-							.status(400)
-							.send({ error: "Password does not match" });
-					});
-			})
-			.catch((error) => {
-				console.error(error);
-				return res.status(404).send({ error: "User not found" });
-			});
+		const { email, password } = req.body;
+
+		// Find user by email
+		const user = await Users.findOne({ email });
+
+		if (!user) {
+			return res.status(404).send({ error: "User not found" });
+		}
+
+		// Compare password
+		const passwordMatch = await bcrypt.compare(password, user.password);
+
+		if (!passwordMatch) {
+			return res.status(401).send({ error: "Invalid credentials" });
+		}
+
+		// Generate token
+		const token = jwt.sign(
+			{ userId: user._id, email: user.email },
+			process.env.JWT_SECRET,
+			{ expiresIn: "6h" }
+		);
+
+		return res.status(200).send({
+			msg: "Login successful!",
+			email: user.email,
+			token,
+		});
 	} catch (error) {
 		console.error(error);
-		return res.status(500).json({ error });
+		return res.status(500).send({ error: "Internal server error" });
 	}
 };
 
