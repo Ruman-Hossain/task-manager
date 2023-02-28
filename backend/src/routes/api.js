@@ -4,6 +4,7 @@ const userController = require("../controllers/userController");
 const categoryController = require("../controllers/categoryController");
 const subcategoryController = require("../controllers/categoryController");
 const taskController = require("../controllers/tasksController");
+const decoder = require("../middleware/decoder");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -13,12 +14,12 @@ router.get("/test", testQuery); //http://localhost:8080/api/v1/test
 
 //User Routes
 router.post("/user/signup", userController.signup);
-router.post("/user/login",userController.verifyUser,userController.login);
-router.patch("/user/update/:id",userController.update);
-router.get("/user/logout",userController.logout);
+router.post("/user/login", userController.verifyUser, userController.login);
+router.patch("/user/update/:id", userController.update);
+router.get("/user/logout", userController.logout);
 
 //Category Routes
-router.post("/category/create", categoryController.create);
+router.post("/category/create", decoder, categoryController.create);
 router.patch("/category/update/:id", categoryController.update);
 router.get("/category/list", categoryController.list);
 router.delete("/category/delete/:id", categoryController.delete);
