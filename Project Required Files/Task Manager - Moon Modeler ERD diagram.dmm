@@ -19,12 +19,26 @@
 					"data": ""
 				},
 				{
+					"id": "a4583f57-eed1-4b1e-a89c-07232e50e1db",
+					"name": "username",
+					"datatype": "String",
+					"param": "",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"list": false,
+					"ref": "",
+					"options": ""
+				},
+				{
 					"id": "41a49411-2177-4f24-8e44-1a0406f268e7",
 					"name": "full_name",
 					"datatype": "String",
 					"param": "",
 					"pk": false,
-					"nn": true,
+					"nn": false,
 					"comment": "",
 					"defaultvalue": "",
 					"data": "",
@@ -660,7 +674,7 @@
 		"currentDisplayMode": "metadata",
 		"def_coltopk": true,
 		"def_others": "",
-		"lastSaved": "Mon Feb 27 2023 10:35:02 GMT+0600 (Bangladesh Standard Time)"
+		"lastSaved": "Tue Feb 28 2023 23:37:41 GMT+0600 (Bangladesh Standard Time)"
 	},
 	"otherObjects": {},
 	"diagrams": {
@@ -678,9 +692,9 @@
 			"diagramItems": {
 				"72a433a0-5278-4bc1-aa46-b2a224bb9851": {
 					"referencedItemId": "72a433a0-5278-4bc1-aa46-b2a224bb9851",
-					"x": 917,
-					"y": 312,
-					"gHeight": 217,
+					"x": 885,
+					"y": 482,
+					"gHeight": 226,
 					"gWidth": 276,
 					"color": "#ffffff",
 					"background": "#03a9f4",
@@ -689,8 +703,8 @@
 				},
 				"6870024f-ac05-4a86-ae64-e1efce31f147": {
 					"referencedItemId": "6870024f-ac05-4a86-ae64-e1efce31f147",
-					"x": 366,
-					"y": 315,
+					"x": 350,
+					"y": 480,
 					"gHeight": 84,
 					"gWidth": 262,
 					"color": "#ffffff",
@@ -700,10 +714,10 @@
 				},
 				"3992ff6c-f9bc-4782-8f5c-60e4479d30cc": {
 					"referencedItemId": "3992ff6c-f9bc-4782-8f5c-60e4479d30cc",
-					"x": 84,
-					"y": 531,
-					"gHeight": 98,
-					"gWidth": 224,
+					"x": 287,
+					"y": 692,
+					"gHeight": 99,
+					"gWidth": 225,
 					"color": "#ffffff",
 					"background": "#03a9f4",
 					"resized": false,
@@ -714,7 +728,7 @@
 					"x": 47,
 					"y": 30,
 					"gHeight": 189,
-					"gWidth": 247,
+					"gWidth": 248,
 					"color": "#ffffff",
 					"background": "#03a9f4",
 					"resized": false,
