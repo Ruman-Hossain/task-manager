@@ -25,9 +25,9 @@ router.get("/category/list", decoder, categoryController.list);
 router.delete("/category/delete/:id", categoryController.delete);
 
 //Sub Category Routes
-router.post("/subcategory/create", subcategoryController.create);
+router.post("/subcategory/create/:category_id",decoder, subcategoryController.create);
 router.patch("/subcategory/update/:id", subcategoryController.update);
-router.get("/subcategory/search-by-category", subcategoryController.list);
+router.get("/subcategory/search-by-category/:category_id",subcategoryController.list);
 router.delete("/subcategory/delete/:id", subcategoryController.delete);
 
 //Tasks Routes
