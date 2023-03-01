@@ -2,7 +2,7 @@ const express = require("express");
 const { testQuery } = require("../controllers/testController");
 const userController = require("../controllers/userController");
 const categoryController = require("../controllers/categoryController");
-const subcategoryController = require("../controllers/categoryController");
+const subcategoryController = require("../controllers/subCategoryController");
 const taskController = require("../controllers/tasksController");
 const decoder = require("../middleware/decoder");
 const router = express.Router();
@@ -25,15 +25,15 @@ router.get("/category/list", decoder, categoryController.list);
 router.delete("/category/delete/:id", categoryController.delete);
 
 //Sub Category Routes
-router.post("/subcategory/create/:category_id",decoder, subcategoryController.create);
+router.post("/subcategory/create/:category_id", decoder, subcategoryController.create);
 router.patch("/subcategory/update/:id", subcategoryController.update);
-router.get("/subcategory/search-by-category/:category_id",subcategoryController.list);
+router.get("/subcategory/list/:category_id", subcategoryController.list);
 router.delete("/subcategory/delete/:id", subcategoryController.delete);
 
 //Tasks Routes
-router.post("/tasks/create", taskController.create);
+router.post("/tasks/create", decoder, taskController.create);
 router.patch("/tasks/update/:id", taskController.update);
-router.get("/tasks/list", taskController.list);
+router.get("/tasks/list/:category_id", decoder, taskController.list);
 router.delete("/tasks/delete/:id", taskController.delete);
-router.delete("/tasks/delete-all", taskController.deleteAll);
+router.delete("/tasks/delete-all", decoder, taskController.deleteAll);
 module.exports = router;

@@ -44,22 +44,22 @@ exports.update = async (req, res) => {
 			res.status(400).json({ error: "Category already exists" })
 		}
 
-			else {
-				Categories.updateOne(query, reqBody, (error, data) => {
-					if (error) {
-						res.status(400).json({
-							status: "Category Update Failed",
-							data: error,
-						});
-					} else {
-						res.status(200).json({
-							status: "Category Update Successful",
-							data: data,
-						});
-					}
-				})
-			}
-			;
+		else {
+			Categories.updateOne(query, reqBody, (error, data) => {
+				if (error) {
+					res.status(400).json({
+						status: "Category Update Failed",
+						data: error,
+					});
+				} else {
+					res.status(200).json({
+						status: "Category Update Successful",
+						data: data,
+					});
+				}
+			})
+		}
+		;
 	} catch (error) {
 		res.status(400).json({ error: " Category Update fail" });
 	}
@@ -83,20 +83,14 @@ exports.delete = async (req, res) => {
 	try {
 		const id = req.params.id;
 		const query = { _id: id };
-		Categories.deleteOne(query, (error, data) => {
-			if (error) {
-				res.status(400).json({
-					status: "Category Delete Failed",
-					data: error,
-				});
-			} else {
-				res.status(200).json({
-					status: "Category Delete Successful",
-					data: data,
-				});
-			}
-		});
+		const data = await Categories.deleteOne(query);
+		if (data.deletedCount === 1) {
+			res.status(200).json({ status: "Category Deleted Scuccessfully", data: data });
+		} else {
+			res.status(201).json({ status: "Category Not Found To Delete" })
+		}
+
 	} catch (error) {
-		res.status(400).json({ error: "Category Delete failed" });
+		res.status(400).json({ error: error.message });
 	}
 };
