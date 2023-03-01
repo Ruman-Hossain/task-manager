@@ -69,7 +69,8 @@ exports.update = async (req, res) => {
 
 exports.list = async (req, res) => {
 	try {
-		const list = await Categories.find({});
+		const user_id = req.headers.user_id;
+		const list = await Categories.find({ user_id: user_id });
 		res.status(200).json(list);
 	} catch (error) {
 		res.status(400).json({ error: "No category list" });
