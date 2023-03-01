@@ -32,7 +32,7 @@ router.delete("/subcategory/delete/:id", subcategoryController.delete);
 
 //Tasks Routes
 router.post("/tasks/create", decoder, taskController.create);
-router.patch("/tasks/update/:id", taskController.update);
+router.patch("/tasks/update/:id", decoder, taskController.update);
 router.get("/tasks/list/:category_id", decoder, taskController.list);
 router.delete("/tasks/delete/:id", taskController.delete);
 router.delete("/tasks/delete-all", decoder, taskController.deleteAll);
