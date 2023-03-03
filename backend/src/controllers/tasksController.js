@@ -2,6 +2,7 @@ const Tasks = require("../models/Tasks");
 exports.create = async (req, res) => {
 	try {
 		const { category_id, subcategory_id } = req.query;
+		const user_id = req.headers.user_id;
 		const inputData = req.body;
 		const query = {
 			category_id: category_id,
@@ -13,7 +14,6 @@ exports.create = async (req, res) => {
 		if (existingTask) {
 			res.status(400).json({ error: "Tasks Already Exists" });
 		} else {
-			const user_id = req.headers.user_id;
 			const end_date = new Date(inputData.end_date);
 			const today = new Date();
 			const daysdiff = end_date.getTime() - today.getTime();
