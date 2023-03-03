@@ -17,6 +17,11 @@ var TaskSchema = new Schema(
 			type: Date,
 			required: true,
 		},
+		status: {
+			type: String,
+			default: "Pending",
+
+		},
 		remaining_time: {
 			type: Number,
 		},

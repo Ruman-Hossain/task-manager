@@ -12,29 +12,13 @@ exports.testQuery = (req, res) => {
 			},
 		},
 		{
-			$lookup: {
-				from: "categories",
-				localField: "category_id",
-				foreignField: "_id",
-				as: "category",
-			},
-		},
-		{
-			$lookup: {
-				from: "subcategories",
-				localField: "subcategory_id",
-				foreignField: "_id",
-				as: "subcategory",
-			},
-		},
-		{
 			$project: {
 				_id: 0,
 				title: 1,
 				description: 1,
+				start_date: 1,
+				end_date: 1,
 				"user.full_name": 1,
-				"category.name": 1,
-				"subcategory.name": 1,
 			},
 		},
 	]).exec(function (err, tasks) {
