@@ -18,7 +18,7 @@ exports.testQuery = (req, res) => {
 				description: 1,
 				start_date: 1,
 				end_date: 1,
-				"user.full_name": 1,
+				"user._id": 1,
 			},
 		},
 	]).exec(function (err, tasks) {

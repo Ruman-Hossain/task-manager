@@ -63,14 +63,6 @@ exports.list = (req, res) => { //Tasks - Title, Description, Start, End, status 
 	Tasks.aggregate([
 		{
 			$lookup: {
-				from: "users",
-				localField: "user_id",
-				foreignField: "_id",
-				as: "user",
-			},
-		},
-		{
-			$lookup: {
 				from: "categories",
 				localField: "category_id",
 				foreignField: "_id",
@@ -94,7 +86,6 @@ exports.list = (req, res) => { //Tasks - Title, Description, Start, End, status 
 				end_date: 1,
 				remaining_time: 1,
 				status: 1,
-				"user.full_name": 1,
 				"category.name": 1,
 				"subcategory.name": 1,
 			},
