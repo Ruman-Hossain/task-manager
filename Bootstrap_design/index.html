@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Open+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    
+    <main class="d-flex">
+        <!-- dashboard menu part  -->
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white purifu" style="width: 280px; height:150vh;">
+
+             <a href="#" class="logo_img">
+              <img src="image/dash_logo.png" alt="" srcset="">
+            </a>
+            
+            <ul class="nav nav-pills flex-column m-1 navbar_navs">
+                <li class="active">
+                  <a href="#" class="nav-link" aria-current="page">
+                   <img src="image/dashboard.svg" alt="" srcset="">
+                    Dashboard
+                  </a>
+                </li>
+                <li>
+                   
+                  <a href="#" class="nav-link">
+                    <img src="image/task.svg" alt="" srcset="">
+                    Tasks
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link">
+                    <img src="image/pending.svg" alt="" srcset="">
+                    Pending
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link">
+                    <img src="image/complete.svg" alt="" srcset="">
+                    Completed
+                  </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">
+                     <img src="image/cancel.svg" alt="" srcset="">
+                      Cancelled
+                    </a>
+                  </li>
+               
+              </ul>
+           
+      
+            
+      
+            
+          </div>
+       <!-- dashboard menu end  -->
+        
+       <!--task part start -->
+       <section id="task_right">
+         <div class="create_task d-flex justify-content-between">
+            <div class="task_btn">
+                <a href="#">Create Task +</a>
+            </div>
+            <div class="task_profile">
+               <a href="#">minhaz_316</a>
+                <a href="#">
+                    <img src="image/profile_img.png" alt="" srcset="">
+                </a>
+            </div>
+         </div>
+         <hr class="hr">
+
+         <!-- create vector -->
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="create_vector d-flex justify-content-between">
+                        <div class="create_one">
+                         <span>   70%</span>
+                         </div>
+                         <div class="create_two">
+                            <h4>Create vector adobe</h4>
+                            <p>Vector art using illustrator 
+                                and many more........</p>
+                         </div>
+                         <div class="create_three">
+                            <h5>Graphic design</h5>
+                            <h6>vector art</h6>
+                            <p>start: 27/2/2022</p>
+                            <p>end: 27/2/2022</p>
+                         </div>
+                </div>
+                <div class="vector_middle">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="cancelled">
+                                
+                               <h4>Cancelled <img src="image/cross.svg" alt="" srcset=""></h4>
+                               
+                               <h3>20<span>Tasks</span></h3>
+                            </div>
+                           </div>
+                           <div class="col-lg-6 m-0">
+                               <div class="cancelled complete">
+                               
+                                  <h4>Completed   <img src="image/write.svg" alt="" srcset=""></h4>
+                                  <h3>100<span>Tasks</span></h3>
+                               </div>
+                              </div>
+                    </div>
+                </div>
+             </div>
+             <!-- reamaining time -->
+             <div class="col-lg-4">
+                <div class="graphic_chart">
+                    <img src="image/design_right.png" alt="" srcset="">
+                </div>
+             </div>
+        </div>
+
+         <!-- next_task part -->
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="next_task">
+                 <h4>Next Task</h4>
+                 <div class="next_task_item d-flex justify-content-between">
+                  <span>1.Web Design</span>
+                  <a href="#">Web</a>
+                 </div>
+                 <div class="next_task_item d-flex justify-content-between">
+                   <span>2. Web Development</span>
+                   <a href="#">Web</a>
+                  </div>
+                  <div class="next_task_item d-flex justify-content-between">
+                   <span>3.Web scraping</span>
+                   <a href="#">Web</a>
+                  </div>
+                  <div class="next_task_item d-flex justify-content-between">
+                   <span>4.Ui Ux</span>
+                   <a href="#">Web</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-8">
+               <div class="next_tast_right">
+                 <h4>Weekly Report</h4>
+                 <img src="image/chart_img.jpg" alt="" srcset="">
+               </div>
+              </div>
+             </div>
+          </div>
+       </section>
+       <!-- task part end -->
+    </main>
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
